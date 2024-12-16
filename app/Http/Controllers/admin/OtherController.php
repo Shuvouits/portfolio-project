@@ -3,26 +3,16 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\IntroRequest;
-use App\Models\Intro;
 use Illuminate\Http\Request;
-use App\Services\IntroService;
 
-class Introductioncontroller extends Controller
+class OtherController extends Controller
 {
-
-    protected $introService;
-
-    public function __construct(IntroService $introService)
-    {
-        $this->introService = $introService;
-    }
-
-
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $intro = Intro::first();
-        return view('backend.component.intro', compact('intro'));
+        return view('backend.component.other');
     }
 
     /**
@@ -36,13 +26,9 @@ class Introductioncontroller extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(IntroRequest $request)
+    public function store(Request $request)
     {
-
-        // Pass data and files to the service
-        $this->introService->saveIntro($request->validated(), $request->file('photo'), $request->file('resume'));
-
-        return redirect()->back()->with('success', 'Intro details saved successfully!');
+        //
     }
 
     /**

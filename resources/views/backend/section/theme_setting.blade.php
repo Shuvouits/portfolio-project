@@ -1,3 +1,7 @@
+
+
+{{--
+
 <div class="offcanvas offcanvas-end border-0" tabindex="-1" id="theme-settings-offcanvas">
     <div class="d-flex align-items-center bg-primary bg-gradient p-3 offcanvas-header">
         <h5 class="m-0 me-2 text-white">Theme Customizer</h5>
@@ -696,7 +700,7 @@
                             <input class="form-check-input" type="radio" name="data-sidebar-image"
                                 id="sidebarimg-01" value="img-1">
                             <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-01">
-                                <img src="assets/images/sidebar/img-1.jpg" alt=""
+                                <img src="{{assets/images/sidebar/img-1.jpg" alt=""
                                     class="avatar-md w-auto object-fit-cover">
                             </label>
                         </div>
@@ -815,3 +819,5 @@
         </div>
     </div>
 </div>
+
+--}}

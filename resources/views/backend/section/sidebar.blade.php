@@ -33,26 +33,62 @@
             <div id="two-column-menu">
             </div>
             <ul class="navbar-nav" id="navbar-nav">
-                <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
-                        <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Dashboard</span>
+                    <a class="nav-link menu-link" href="{{route('dashboard')}}">
+                       <img src="{{asset('backend/assets/images/static/dashboard.png')}}" width="40" height="40" />
+
+                        <span data-key="t-widgets" style="margin-left: 10px">Dashboard</span>
                     </a>
                 </li>
 
 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="{{route('intro.index')}}">
-                        <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">Introduction</span>
+                        <img src="{{asset('backend/assets/images/static/presentation.png')}}" width="40" height="40" />
+
+                         <span data-key="t-widgets" style="margin-left: 10px" >Introduction</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="{{route('about.index')}}">
-                        <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets">About</span>
+
+                        <img src="{{asset('backend/assets/images/static/id-card.png')}}" width="40" height="40" />
+
+                        <span data-key="t-widgets" style="margin-left: 10px">About</span>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{route('service.index')}}">
+                        <img src="{{asset('backend/assets/images/static/service.png')}}" width="40" height="40" />
+                         <span data-key="t-widgets" style="margin-left: 10px">Service</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{route('portfolio.index')}}">
+                        <img src="{{asset('backend/assets/images/static/professional-portfolio.png')}}" width="40" height="40" />
+                        <span data-key="t-widgets" style="margin-left: 10px">Portfolio</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{route('core.index')}}">
+                        <img src="{{asset('backend/assets/images/static/book.png')}}" width="40" height="40" />
+                         <span data-key="t-widgets" style="margin-left: 10px">Core</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{route('other-info.index')}}">
+                        <img src="{{asset('backend/assets/images/static/responsibility.png')}}" width="40" height="40" />
+                         <span data-key="t-widgets" style="margin-left: 10px">General-Setting</span>
+                    </a>
+                </li>
+
 
 
 

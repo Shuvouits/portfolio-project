@@ -58,6 +58,8 @@
     <!-- JAVASCRIPT -->
     @include('backend.section.script')
 
+    @stack('scripts');
+
 
 </body>
 
