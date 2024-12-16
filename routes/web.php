@@ -18,7 +18,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::resource('intro', Introductioncontroller::class);
+
     Route::resource('about', AboutController::class);
+    Route::post('/biography-update', [AboutController::class, 'biographyUpdate'])->name('bioupdate');
+    Route::post('/education-update', [AboutController::class, 'educationUpdate'])->name('eduupdate');
+    Route::post('/experience-update', [AboutController::class, 'experienceUpdate'])->name('expupdate');
+    Route::post('/technology-update', [AboutController::class, 'technologyUpdate'])->name('techupdate');
+
+
+
+
+
     Route::resource('service', ServiceController::class);
     Route::resource('portfolio', PortfolioController::class);
     Route::resource('core', CoreController::class);

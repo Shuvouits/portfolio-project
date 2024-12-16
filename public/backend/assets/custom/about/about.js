@@ -11,7 +11,34 @@ $(document).ready(function () {
                 <label for="institution-${rowIndex}" class="form-label">Name of Institution</label>
                 <input type="text" class="form-control mb-2" placeholder="Enter your institution name" id="institution-${rowIndex}" name="institutions[]">
 
-                <button type="button" class="btn btn-danger remove-row">Remove</button>
+                <div class='row'  style="display: flex; align-items:center; justify-content: space-between">
+                   <div class="col-md-11">
+
+                         <label for="date-${rowIndex}" class="form-label">Date</label>
+                         <input type="date" class="form-control mb-2" id="date-${rowIndex}" name="date[]">
+
+                   </div>
+                   <div class="col-md-1 d-flex justify-content-end ">
+
+                       <button type="button" class="btn btn-danger remove-row">
+
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="25" height="25"
+                                                                                fill="currentColor"
+                                                                                class="bi bi-trash3-fill"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path
+                                                                                    d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
+                            </svg>
+
+                       </button>
+
+                   </div>
+                </div>
+
+
+
+
             </div>
         `;
         $('#form-rows').append(newRow);
@@ -23,27 +50,7 @@ $(document).ready(function () {
         $(this).closest('.form-row').remove();
     });
 
-    // Handle form submission
-    $('#dynamic-form').submit(function (event) {
-        event.preventDefault(); // Prevent actual form submission
 
-        // Collect form data
-        let formData = $(this).serializeArray();
-        console.log(formData); // Output collected data to console
-
-        // Example: Send the data via AJAX
-        // $.ajax({
-        //     url: '/your-endpoint',
-        //     method: 'POST',
-        //     data: formData,
-        //     success: function (response) {
-        //         alert('Form submitted successfully!');
-        //     },
-        //     error: function (error) {
-        //         alert('Something went wrong!');
-        //     }
-        // });
-    });
 
     //company script
 
@@ -58,10 +65,39 @@ $(document).ready(function () {
                 <label for="address-${rowIndex}" class="form-label">Company Address</label>
                 <input type="text" class="form-control mb-2" placeholder="Enter company address" id="address-${rowIndex}" name="address[]">
 
-                 <label for="date-${rowIndex}" class="form-label">Date</label>
-                <input type="date" class="form-control mb-2" id="date-${rowIndex}" name="date[]">
+                <label for="start-date-${rowIndex}" class="form-label">Start Date</label>
+                <input type="date" class="form-control mb-2"  id="start-date-${rowIndex}" name="start_date[]">
 
-                <button type="button" class="btn btn-danger remove-row-company">Remove</button>
+                <div class='row'  style="display: flex; align-items:center; justify-content: space-between">
+
+                   <div class="col-md-11">
+
+                         <label for="end-date-${rowIndex}" class="form-label">End Date</label>
+                         <input type="date" class="form-control mb-2" id="end-date-${rowIndex}" name="end_date[]">
+
+                   </div>
+                   <div class="col-md-1 d-flex justify-content-end">
+
+                        <button type="button" class="btn btn-danger remove-row-company">
+
+                         <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                width="25" height="25"
+                                                                                fill="currentColor"
+                                                                                class="bi bi-trash3-fill"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path
+                                                                                    d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
+                                                                            </svg>
+
+                        </button>
+
+                   </div>
+
+                </div>
+
+
+
+
             </div>
         `;
         $('#form-rows-company').append(newRow);
@@ -73,27 +109,7 @@ $(document).ready(function () {
         $(this).closest('.form-row').remove();
     });
 
-    // Handle form submission
-    $('#dynamic-form-company').submit(function (event) {
-        event.preventDefault(); // Prevent actual form submission
 
-        // Collect form data
-        let formData = $(this).serializeArray();
-        console.log(formData); // Output collected data to console
-
-        // Example: Send the data via AJAX
-        // $.ajax({
-        //     url: '/your-endpoint',
-        //     method: 'POST',
-        //     data: formData,
-        //     success: function (response) {
-        //         alert('Form submitted successfully!');
-        //     },
-        //     error: function (error) {
-        //         alert('Something went wrong!');
-        //     }
-        // });
-    });
 
 
     //Technology script
@@ -103,11 +119,27 @@ $(document).ready(function () {
         let newRow = `
             <div class="form-row mb-3">
                 <label for="technology-${rowIndex}" class="form-label">Prefered Technology</label>
-                <input type="text" class="form-control mb-2" placeholder="Enter technology name" id="technology-${rowIndex}" name="technology[]">
+
+                <div class="row">
+                    <div class="col-md-11">
+                        <input type="text" class="form-control mb-2" placeholder="Enter technology name" id="technology-${rowIndex}" name="technology[]">
+                    </div>
+                    <div class="col-md-1 d-flex justify-content-end ">
+                        <button type="button" class="btn btn-danger remove-row-technology">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                             <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+                        </svg>
+
+                        </button>
+
+                    </div>
+                </div>
 
 
 
-                <button type="button" class="btn btn-danger remove-row-technology">Remove</button>
+
+
             </div>
         `;
         $('#form-rows-technology').append(newRow);
@@ -119,27 +151,7 @@ $(document).ready(function () {
         $(this).closest('.form-row').remove();
     });
 
-    // Handle form submission
-    $('#dynamic-form-technology').submit(function (event) {
-        event.preventDefault(); // Prevent actual form submission
 
-        // Collect form data
-        let formData = $(this).serializeArray();
-        console.log(formData); // Output collected data to console
-
-        // Example: Send the data via AJAX
-        // $.ajax({
-        //     url: '/your-endpoint',
-        //     method: 'POST',
-        //     data: formData,
-        //     success: function (response) {
-        //         alert('Form submitted successfully!');
-        //     },
-        //     error: function (error) {
-        //         alert('Something went wrong!');
-        //     }
-        // });
-    });
 
 
 

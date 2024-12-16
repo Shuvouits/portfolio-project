@@ -3,63 +3,79 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BioRequest;
+use App\Http\Requests\EducationRequest;
+use App\Http\Requests\ExperienceRequest;
+use App\Http\Requests\TechnologyRequest;
+use App\Models\Education;
+use App\Models\Experience;
+use App\Models\Technology;
+use App\Services\BioService;
+use App\Services\EduService;
+use App\Services\ExpService;
+use App\Services\TechService;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    protected $bioService, $eduService, $expService, $techService;
+
+    public function __construct(BioService $bioService, EduService $eduService, ExpService $expService, TechService $techService)
+    {
+        $this->bioService = $bioService;
+        $this->eduService = $eduService;
+        $this->expService = $expService;
+        $this->techService = $techService;
+    }
+
+
+
     public function index()
     {
-        return view('backend.component.about');
+        $educations = Education::all();
+        $experiences = Experience::all();
+        $technology = Technology::all();
+        return view('backend.component.about', compact('educations', 'experiences', 'technology'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+   
+
+
+    public function biographyUpdate(BioRequest $request){
+
+        $this->bioService->saveBio($request->validated());
+        return redirect()->back();
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    public function educationUpdate(EducationRequest $request){
+
+
+
+        $this->eduService->saveEdu($request->validated());
+        return redirect()->back();
+
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+    public function experienceUpdate(ExperienceRequest $request){
+        $this->expService->saveExp($request->validated());
+        return redirect()->back();
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+    public function technologyUpdate(TechnologyRequest $request){
+        $this->techService->saveTech($request->validated());
+        return redirect()->back();
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+
+
+
+
+
+
+
 }
