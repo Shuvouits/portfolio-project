@@ -37,13 +37,14 @@
                                         <div class="d-flex mb-2">
 
                                             <div class="flex-grow-1 ms-3">
-                                                <form>
+                                                <form method="post" action="{{route('service.store')}}">
+                                                    @csrf
                                                     <div class="main-container">
-                                                        <label for="editor" class="form-label">Biography</label>
-                                                        <textarea id="editor" name="content" class="form-control"></textarea>
+                                                        <label for="editor" class="form-label">Describe your service intro</label>
+                                                        <textarea id="editor" name="intro" class="form-control"></textarea>
                                                     </div>
 
-                                                    <button class="btn btn-primary w-100">Submit</button>
+                                                    <button type="submit" class="btn btn-primary w-100">Update</button>
 
                                                 </form>
                                             </div>
@@ -61,7 +62,9 @@
                                             <div class="flex-grow-1 ms-3">
 
                                                 <button type="button" id="add-row"
-                                                            class="btn btn-success">Add More</button>
+                                                            class="btn btn-success">
+                                                            Add More
+                                                </button>
 
                                                 <form id="dynamic-form">
                                                     <div id="form-rows">

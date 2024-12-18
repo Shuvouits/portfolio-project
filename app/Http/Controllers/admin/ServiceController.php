@@ -3,13 +3,20 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ServiceRequest;
+use App\Services\IntroSectionService;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    protected $introSectionService;
+
+    public function __construct(IntroSectionService $introSectionService)
+    {
+        $this->introSectionService = $introSectionService;
+
+    }
+
     public function index()
     {
         return view('backend.component.service');
@@ -26,9 +33,10 @@ class ServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ServiceRequest $request)
     {
-        //
+        $this->introSectionService->saveIntro($request->validated());
+        return redirect()->back()->with('success', 'Data updated successfully');
     }
 
     /**

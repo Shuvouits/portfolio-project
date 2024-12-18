@@ -45,3 +45,32 @@
         });
     });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+@if(session('success'))
+<script>
+    Swal.fire({
+        toast: true,
+        icon: 'success',
+        title: '{{ session('success') }}',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        customClass: {
+            title: 'swal-custom-title',
+        }
+    });
+</script>
+
+<style>
+    .swal-custom-title {
+        color: gray !important; /* Title color */
+        font-weight: bold; /* Optional: Make the text bold */
+    }
+</style>
+@endif
+
+
