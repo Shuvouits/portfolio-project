@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\OtherController;
 use App\Http\Controllers\admin\PortfolioController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServiceInfoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -31,7 +32,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('service', ServiceController::class);
 
-    
+    Route::resource('service-info', ServiceInfoController::class);
+
+
     Route::resource('portfolio', PortfolioController::class);
     Route::resource('core', CoreController::class);
     Route::resource('other-info', OtherController::class);

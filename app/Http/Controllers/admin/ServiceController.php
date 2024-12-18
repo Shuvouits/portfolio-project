@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ServiceInfoRequest;
 use App\Http\Requests\ServiceRequest;
+use App\Models\Service;
+use App\Models\ServiceInfo;
+use App\Services\InfoService;
 use App\Services\IntroSectionService;
 use Illuminate\Http\Request;
 
@@ -11,7 +15,7 @@ class ServiceController extends Controller
 {
     protected $introSectionService;
 
-    public function __construct(IntroSectionService $introSectionService)
+    public function __construct(IntroSectionService $introSectionService, InfoService $infoService)
     {
         $this->introSectionService = $introSectionService;
 
@@ -19,55 +23,20 @@ class ServiceController extends Controller
 
     public function index()
     {
-        return view('backend.component.service');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $services = Service::first();
+        $service_info = ServiceInfo::all();
+        return view('backend.component.service', compact('services', 'service_info'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ServiceRequest $request)
+    public function store(ServiceRequest $serviceRequest)
     {
-        $this->introSectionService->saveIntro($request->validated());
+        $this->introSectionService->saveIntro($serviceRequest->validated());
         return redirect()->back()->with('success', 'Data updated successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }
