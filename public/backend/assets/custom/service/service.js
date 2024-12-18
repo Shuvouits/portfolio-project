@@ -19,10 +19,10 @@ $(document).ready(function () {
     $('#add-row').click(function () {
         let newRow = `
             <div class="form-row mb-3">
-                <label for="icon-${rowIndex}" class="form-label">Icon</label>
+               <label for="photo-${rowIndex}" class="form-label">Image</label>
+               <input type="file" class="form-control mb-2 photoInput"   id="image-${rowIndex}" name="image[]">
 
-                <input type="file" class="form-control mb-2 photoInput" id="icon-${rowIndex}" name="icon[]" data-index="${rowIndex}">
-<img src="" class="photoPreview" id="preview-${rowIndex}" width="50" height="50" style="display: none; margin-top: 10px; margin-bottom: 10px" />
+                <img src="" class="photoPreview" id="preview-${rowIndex}" width="50" height="50" style="display: none; margin-top: 10px; margin-bottom: 10px" />
 
                 <label for="service-name-${rowIndex}" class="form-label">Service Name</label>
                 <input type="text" class="form-control mb-2" placeholder="Example: Web Development" id="service-name-${rowIndex}" name="service_name[]">

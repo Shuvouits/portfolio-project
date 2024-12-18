@@ -19,14 +19,21 @@ $(document).ready(function () {
    $('#add-row').click(function () {
        let newRow = `
            <div class="form-row mb-3">
-               <label for="image-${rowIndex}" class="form-label">Image</label>
-               <input type="file" class="form-control mb-2"  id="image-${rowIndex}" name="image[]">
+
+               <input type="hidden" name="id[]" id="portfolio-${rowIndex}" />
+
+
+               <label for="photo-${rowIndex}" class="form-label">Image</label>
+                <input type="file" class="form-control mb-2 photoInput" id="photo-${rowIndex}" name="photo[]" data-index="${rowIndex}">
+
+
+                <img src="" class="photoPreview" id="preview-${rowIndex}" width="50" height="50" style="display: none; margin-top: 10px; margin-bottom: 10px" />
 
                <label for="title-${rowIndex}" class="form-label">Title</label>
                <input type="text" class="form-control mb-2" placeholder="Example: Web Development" id="title-${rowIndex}" name="title[]">
 
-               <label for="title-headline-${rowIndex}" class="form-label">Title Headline</label>
-               <input type="text" class="form-control mb-2" placeholder="Example : Website Design for Marketing Agency Startup" id="title-headline-${rowIndex}" name="title-headline[]">
+               <label for="headline-${rowIndex}" class="form-label">Title Headline</label>
+               <input type="text" class="form-control mb-2" placeholder="Example : Website Design for Marketing Agency Startup" id="headline-${rowIndex}" name="headline[]">
 
                <label for="description-${rowIndex}" class="form-label">Description</label>
                <textarea  class="form-control mb-2" id="description-${rowIndex}" name="description[]"></textarea>
@@ -58,27 +65,27 @@ $(document).ready(function () {
        $(this).closest('.form-row').remove();
    });
 
-   // Handle form submission
-   $('#dynamic-form').submit(function (event) {
-       event.preventDefault(); // Prevent actual form submission
 
-       // Collect form data
-       let formData = $(this).serializeArray();
-       console.log(formData); // Output collected data to console
 
-       // Example: Send the data via AJAX
-       // $.ajax({
-       //     url: '/your-endpoint',
-       //     method: 'POST',
-       //     data: formData,
-       //     success: function (response) {
-       //         alert('Form submitted successfully!');
-       //     },
-       //     error: function (error) {
-       //         alert('Something went wrong!');
-       //     }
-       // });
-   });
+   // Update image preview dynamically
+$('#form-rows').on('change', '.photoInput', function (event) {
+    const index = $(this).data('index'); // Get the data-index value
+    const file = event.target.files[0]; // Get the selected file
+
+    if (file) {
+        const reader = new FileReader(); // Create FileReader instance
+        reader.onload = function (e) {
+            // Dynamically set the image preview and make it visible
+            const preview = $(`#preview-${index}`);
+            preview.attr('src', e.target.result).css('display', 'block');
+        };
+        reader.readAsDataURL(file); // Read the selected file
+    }
+});
+
+
+
+
 
 
 

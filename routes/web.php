@@ -36,6 +36,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     Route::resource('portfolio', PortfolioController::class);
+    Route::post('portfolio-store', [PortfolioController::class, 'portfolioStore'])->name('portfolioStore');
+
+
     Route::resource('core', CoreController::class);
     Route::resource('other-info', OtherController::class);
 

@@ -37,13 +37,15 @@
                                         <div class="d-flex mb-2">
 
                                             <div class="flex-grow-1 ms-3">
-                                                <form>
+                                                <form method="post" action="{{ route('portfolio.store') }}">
+                                                    @csrf
                                                     <div class="main-container">
-                                                        <label for="editor" class="form-label">Biography</label>
-                                                        <textarea id="editor" name="content" class="form-control"></textarea>
+                                                        <label for="editor" class="form-label">Portfolio
+                                                            Introduction</label>
+                                                        <textarea id="editor" name="intro" class="form-control" required>{{ $portfolio_intro->intro }}</textarea>
                                                     </div>
 
-                                                    <button class="btn btn-primary w-100">Submit</button>
+                                                    <button type="submit" class="btn btn-primary w-100">Update</button>
 
                                                 </form>
                                             </div>
@@ -60,51 +62,112 @@
 
                                             <div class="flex-grow-1 ms-3">
 
-                                                <button type="button" id="add-row"
-                                                            class="btn btn-success">Add More</button>
+                                                <div class="d-flex justify-content-end">
 
-                                                <form id="dynamic-form">
-                                                    <div id="form-rows">
-                                                        <div class="form-row mb-3">
+                                                    <button type="button" id="add-row" class="btn btn-success">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="25"
+                                                            height="25" fill="currentColor" class="bi bi-plus-circle"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                                            <path
+                                                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                                                        </svg>
+                                                    </button>
 
-
-
-                                                            <label for="image-0" class="form-label"
-                                                                style="display: flex; align-items:center; justify-content:space-between">
-                                                                <span>Image</span>
-
-
-                                                            </label>
-                                                            <input type="file" class="form-control mb-2"
-                                                                id="image-0"
-                                                                name="image[]">
-
-                                                            <label for="title-0" class="form-label">Title</label>
-                                                            <input type="text" class="form-control mb-2"
-                                                                placeholder="Example: Web Development" id="title-0"
-                                                                name="title[]">
-
-                                                                <label for="title-headline-0" class="form-label">Title Headline</label>
-                                                                <input class="form-control mb-2"
-                                                                    id="title-headline-0"
-                                                                    placeholder="Example : Website Design for Marketing Agency Startup"
-                                                                    name="title-headline[]"></input>
-
-
-                                                                    <label for="description-0" class="form-label">Portfolio Description</label>
-                                                                    <textarea class="form-control mb-2"
-                                                                        id="description-0"
-                                                                        name="description[]"></textarea>
+                                                </div>
 
 
 
-                                                            <button type="button"
-                                                                class="btn btn-danger remove-row">Remove</button>
+                                                <form id="dynamic-form" method="post"
+                                                    action="{{ route('portfolioStore') }}" enctype="multipart/form-data">
+                                                    @csrf
+
+
+                                                    @if ($errors->any())
+                                                        <div class="alert alert-danger">
+                                                            <ul>
+                                                                @foreach ($errors->all() as $error)
+                                                                    <li>{{ $error }}</li>
+                                                                @endforeach
+                                                            </ul>
                                                         </div>
+                                                    @endif
+
+
+                                                    <div id="form-rows">
+                                                        @foreach ($portfolios as $index => $portfolio)
+                                                            <div class="form-row mb-3">
+
+
+                                                                <input type="hidden" name="id[]" id="portfolio-{{$index}}" value="{{$portfolio->id}}" />
+
+
+
+                                                                <label for="photo-{{ $index }}" class="form-label"
+                                                                    style="display: flex; align-items:center; justify-content:space-between">
+                                                                    <span>Image</span>
+
+
+                                                                </label>
+
+                                                                <input type="file" class="form-control mb-2 photoInput"
+                                                                    id="photo-{{ $index }}" name="photo[]"
+                                                                    data-index="0">
+
+
+                                                                <div>
+
+                                                                    <img src="{{ asset($portfolio->photo) }}"
+                                                                        class="photoPreview"
+                                                                        id="preview-{{ $index }}" width="50"
+                                                                        height="50"
+                                                                        style=" margin-top: 10px; margin-bottom: 10px" />
+
+                                                                </div>
+
+
+                                                                <label for="title-{{ $index }}"
+                                                                    class="form-label">Title</label>
+                                                                <input type="text" class="form-control mb-2"
+                                                                    placeholder="Example: Web Development"
+                                                                    id="title-{{ $index }}" name="title[]"
+                                                                    value="{{ $portfolio->title }}" required>
+
+                                                                <label for="title-headline-{{ $index }}"
+                                                                    class="form-label">
+                                                                    Headline</label>
+                                                                <input class="form-control mb-2"
+                                                                    id="title-headline-{{ $index }}"
+                                                                    placeholder="Example : Website Design for Marketing Agency Startup"
+                                                                    name="headline[]"
+                                                                    value="{{ $portfolio->headline }}"></input>
+
+
+                                                                <label for="description-{{ $index }}"
+                                                                    class="form-label">Portfolio
+                                                                    Description</label>
+                                                                <textarea class="form-control mb-2" id="description-{{ $index }}" name="description[]">{{ $portfolio->description }}</textarea>
+
+
+
+                                                                <button type="button" class="btn btn-danger remove-row">
+
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                        height="16" fill="currentColor"
+                                                                        class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                                                        <path
+                                                                            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
+                                                                    </svg>
+
+                                                                </button>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
 
+
                                                     <button type="submit"
-                                                        class="btn btn-primary w-100 mt-3">Submit</button>
+                                                        class="btn btn-primary w-100 mt-3">Update</button>
                                                 </form>
 
 
