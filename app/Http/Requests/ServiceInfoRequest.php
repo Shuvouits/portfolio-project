@@ -24,7 +24,7 @@ class ServiceInfoRequest extends FormRequest
         return [
             'service_name.*' => 'required|string|max:255',
             'service_description.*' => 'nullable|string',
-
+            'id*' => 'nullable|integer',
             'icon.*' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
 
         ];

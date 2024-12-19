@@ -22,6 +22,7 @@ class ServiceInfoController extends Controller
     public function store(ServiceInfoRequest $request)
     {
 
+      // dd($request->validated());
 
         $this->infoService->saveInfoService($request->validated(), $request->file('icon'));
         return redirect()->back()->with('success', 'Data updated successfully');

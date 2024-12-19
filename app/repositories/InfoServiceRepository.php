@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 use App\Models\ServiceInfo;
 use App\Traits\FileUploadTrait; // Import the FileUploadTrait
+use Illuminate\Support\Facades\File;
 
 class InfoServiceRepository
 {
@@ -15,17 +16,10 @@ class InfoServiceRepository
     {
 
 
-        // Retrieve and delete all existing images
-        $existingImages = ServiceInfo::pluck('icon')->toArray();
-        foreach ($existingImages as $image) {
-            if ($image && file_exists(public_path(parse_url($image, PHP_URL_PATH)))) {
-                unlink(public_path(parse_url($image, PHP_URL_PATH)));
-            }
-        }
+        $all_service = ServiceInfo::all();
 
-
-        // Delete all previous education records
-        ServiceInfo::truncate();
+         // Delete all previous education records
+         ServiceInfo::truncate();
 
         // Check if 'degrees' key exists and is not empty
         if (empty($data['service_name']) || !is_array($data['service_name'])) {
@@ -57,7 +51,55 @@ class InfoServiceRepository
             $createdRecords[] = $service_info;
         }
 
+        $this->updateImage($all_service);
+
+        // Call the deleteUnusedImages function
+        $this->deleteUnusedImages();
+
         // Return all created records
         return $createdRecords;
     }
+
+
+    public function updateImage($all_service){
+
+
+
+        foreach ($all_service as $item) {
+            $service_data = ServiceInfo::where('id', $item['id'])->first();
+
+            // চেক করুন `$service_data` null কিনা
+            if ($service_data && empty($service_data->icon)) {
+                $service_data->icon = $item->icon;
+                $service_data->save();
+            }
+        }
+
+    }
+
+    public function deleteUnusedImages()
+    {
+        // ১. Public ফোল্ডারে থাকা সব ফাইল নিন
+        $folderPath = public_path('upload/serviceInfo');
+        $allFiles = File::files($folderPath);
+
+        // ২. ডাটাবেসে থাকা সব ছবির ফাইল নাম বের করুন
+        $databaseImages = ServiceInfo::pluck('icon')->map(function ($photo) {
+            return basename(parse_url($photo, PHP_URL_PATH)); // Extract only the file name from the URL
+        })->toArray();
+
+        // ৩. প্রতিটি ফাইল লুপ করুন এবং ডাটাবেসে চেক করুন
+        foreach ($allFiles as $file) {
+            // Get the file name only (e.g., "30.png")
+            $fileName = $file->getFilename();
+
+            // Check if this file is NOT in the database
+            if (!in_array($fileName, $databaseImages)) {
+                // If not, delete the file
+                unlink($file->getRealPath());
+            }
+        }
+    }
+
+
 }
