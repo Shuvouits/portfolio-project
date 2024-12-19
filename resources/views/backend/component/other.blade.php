@@ -5,7 +5,7 @@
 
         <div class="row">
             <div class="col-xxl-12">
-                <h5 class="mb-3">Vertical Nav Tabs</h5>
+                <h5 class="mb-3">General Settings</h5>
                 <div class="card">
                     <div class="card-body">
 
@@ -54,13 +54,14 @@
                                         <div class="d-flex mb-2">
 
                                             <div class="flex-grow-1 ms-3">
-                                                <form>
+                                                <form method="post" action="{{route('other-info.store')}}">
+                                                    @csrf
                                                     <div class="main-container">
                                                         <label for="editor" class="form-label">Address Details</label>
-                                                        <textarea id="editor" name="content" class="form-control"></textarea>
+                                                        <textarea id="editor" name="address" class="form-control"></textarea>
                                                     </div>
 
-                                                    <button class="btn btn-primary w-100">Submit</button>
+                                                    <button type="submit" class="btn btn-primary w-100">Update</button>
 
                                                 </form>
                                             </div>
@@ -78,7 +79,8 @@
                                             <div class="flex-grow-1 ms-3">
 
 
-                                                <form id="dynamic-form">
+                                                <form id="dynamic-form" method="post" action="{{route('other-info.store')}}">
+                                                    @csrf
                                                     <div id="form-rows">
                                                         <div class="form-row mb-3">
 
@@ -87,7 +89,7 @@
                                                             <label for="email" class="form-label">Email</label>
                                                             <input type="email" class="form-control mb-2"
                                                                 placeholder="Example: jhon@example.com" id="email"
-                                                                name="title[]">
+                                                                name="email">
 
 
 
@@ -97,7 +99,7 @@
                                                     </div>
 
                                                     <button type="submit"
-                                                        class="btn btn-primary w-100 mt-3">Submit</button>
+                                                        class="btn btn-primary w-100 mt-3">Update</button>
                                                 </form>
 
 
@@ -115,7 +117,8 @@
                                             <div class="flex-grow-1 ms-3">
 
 
-                                                <form id="dynamic-form">
+                                                <form id="dynamic-form" method="post" action="{{route('other-info.store')}}">
+                                                    @csrf
                                                     <div id="form-rows">
                                                         <div class="form-row mb-3">
 
@@ -124,13 +127,13 @@
                                                             <label for="phone" class="form-label">Phone</label>
                                                             <input type="number" class="form-control mb-2"
                                                                 placeholder="Example: +8801751720590" id="phone"
-                                                                name="title[]">
+                                                                name="phone">
 
                                                         </div>
                                                     </div>
 
                                                     <button type="submit"
-                                                        class="btn btn-primary w-100 mt-3">Submit</button>
+                                                        class="btn btn-primary w-100 mt-3">Update</button>
                                                 </form>
 
 
@@ -147,7 +150,8 @@
                                             <div class="flex-grow-1 ms-3">
 
 
-                                                <form id="dynamic-form">
+                                                <form id="dynamic-form" method="post" action="{{route('other-info.store')}}">
+                                                    @csrf
                                                     <div id="form-rows">
                                                         <div class="form-row mb-3">
 
@@ -182,7 +186,7 @@
                                                     </div>
 
                                                     <button type="submit"
-                                                        class="btn btn-primary w-100 mt-3">Submit</button>
+                                                        class="btn btn-primary w-100 mt-3">update</button>
                                                 </form>
 
 
@@ -198,7 +202,8 @@
                                             <div class="flex-grow-1 ms-3">
 
 
-                                                <form id="dynamic-form">
+                                                <form id="dynamic-form" method="post" action="{{route('other-info.store')}}">
+                                                    @csrf
                                                     <div id="form-rows">
                                                         <div class="form-row mb-3">
 
@@ -215,7 +220,7 @@
                                                     </div>
 
                                                     <button type="submit"
-                                                        class="btn btn-primary w-100 mt-3">Submit</button>
+                                                        class="btn btn-primary w-100 mt-3">Update</button>
                                                 </form>
 
 
@@ -232,7 +237,8 @@
                                             <div class="flex-grow-1 ms-3">
 
 
-                                                <form id="dynamic-form">
+                                                <form id="dynamic-form" method="post" action="{{route('other-info.store')}}" enctype="multipart/form-data">
+                                                    @csrf
                                                     <div id="form-rows">
                                                         <div class="form-row mb-3">
 
@@ -241,18 +247,20 @@
                                                             <label for="meta-title" class="form-label">Meta Title</label>
                                                             <input type="text" class="form-control mb-2"
                                                                 placeholder="Example : © 2021 copyright all right reserved"
-                                                                id="copyright" name="copyright">
+                                                                id="copyright" name="meta_title">
 
 
                                                             <label for="meta-description" class="form-label">Meta
                                                                 Description</label>
                                                             <textarea type="text" class="form-control mb-2" placeholder="Enter description" id="meta-description"
-                                                                name="copyright"></textarea>
+                                                                name="meta_description"></textarea>
 
                                                             <label for="logo" class="form-label">Logo</label>
-                                                            <input type="text" class="form-control mb-2"
-                                                                placeholder="Example : StackDeveloper" id="logo"
-                                                                name="copyright">
+                                                            <input type="file" class="form-control mb-2"
+                                                                 id="logo"
+                                                                name="logo">
+
+                                                                <img id="preview-logo" src="#" alt="Logo Preview" style="display:none; margin-top: 10px; width: 60px; height: 60px">
 
 
 
@@ -260,7 +268,7 @@
                                                     </div>
 
                                                     <button type="submit"
-                                                        class="btn btn-primary w-100 mt-3">Submit</button>
+                                                        class="btn btn-primary w-100 mt-3">Update</button>
                                                 </form>
 
 
@@ -294,5 +302,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('backend/assets/custom/portfolio/portfolio.js') }}"></script>
+    <script src="{{ asset('backend/assets/custom/other/other.js') }}"></script>
 @endpush
