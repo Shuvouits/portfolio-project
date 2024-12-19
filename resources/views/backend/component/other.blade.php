@@ -58,7 +58,7 @@
                                                     @csrf
                                                     <div class="main-container">
                                                         <label for="editor" class="form-label">Address Details</label>
-                                                        <textarea id="editor" name="address" class="form-control"></textarea>
+                                                        <textarea id="editor" name="address" class="form-control">{{$general_setting->address}}</textarea>
                                                     </div>
 
                                                     <button type="submit" class="btn btn-primary w-100">Update</button>
@@ -89,7 +89,7 @@
                                                             <label for="email" class="form-label">Email</label>
                                                             <input type="email" class="form-control mb-2"
                                                                 placeholder="Example: jhon@example.com" id="email"
-                                                                name="email">
+                                                                name="email" value="{{$general_setting->email}}">
 
 
 
@@ -127,7 +127,7 @@
                                                             <label for="phone" class="form-label">Phone</label>
                                                             <input type="number" class="form-control mb-2"
                                                                 placeholder="Example: +8801751720590" id="phone"
-                                                                name="phone">
+                                                                name="phone"  value="{{$general_setting->phone}}"  >
 
                                                         </div>
                                                     </div>
@@ -160,27 +160,27 @@
                                                             <label for="facebook" class="form-label">Facebook</label>
                                                             <input type="text" class="form-control mb-2"
                                                                 placeholder="https://www.facebook.com/" id="facebook"
-                                                                name="facebook">
+                                                                name="facebook"  value="{{$general_setting->facebook}}"  >
 
                                                             <label for="twitter" class="form-label">Twitter</label>
                                                             <input type="text" class="form-control mb-2"
                                                                 placeholder="https://www.twitter.com/" id="twitter"
-                                                                name="twitter">
+                                                                name="twitter"  value="{{$general_setting->twitter}}"  >
 
                                                             <label for="instagram" class="form-label">Instagram</label>
                                                             <input type="text" class="form-control mb-2"
                                                                 placeholder="https://www.instagram.com/" id="instagram"
-                                                                name="instagram">
+                                                                name="instagram" value="{{$general_setting->instagram}}">
 
                                                             <label for="linkedin" class="form-label">Linkedin</label>
                                                             <input type="text" class="form-control mb-2"
                                                                 placeholder="https://www.linkedin.com/" id="linkedin"
-                                                                name="linkedin">
+                                                                name="linkedin" value="{{$general_setting->linkedin}}" >
 
                                                             <label for="pinterest" class="form-label">Pinterest</label>
                                                             <input type="text" class="form-control mb-2"
                                                                 placeholder="https://www.pinterest.com/" id="pinterest"
-                                                                name="pinterest">
+                                                                name="pinterest"  value="{{$general_setting->pinterest}}" >
 
                                                         </div>
                                                     </div>
@@ -212,7 +212,7 @@
                                                             <label for="copyright" class="form-label">Copyright</label>
                                                             <input type="text" class="form-control mb-2"
                                                                 placeholder="Example : © 2021 copyright all right reserved"
-                                                                id="copyright" name="copyright">
+                                                                id="copyright" name="copyright" value="{{$general_setting->copyright}}">
 
 
 
@@ -247,20 +247,20 @@
                                                             <label for="meta-title" class="form-label">Meta Title</label>
                                                             <input type="text" class="form-control mb-2"
                                                                 placeholder="Example : © 2021 copyright all right reserved"
-                                                                id="copyright" name="meta_title">
+                                                                id="copyright" name="meta_title" value="{{$general_setting->meta_title}}">
 
 
                                                             <label for="meta-description" class="form-label">Meta
                                                                 Description</label>
                                                             <textarea type="text" class="form-control mb-2" placeholder="Enter description" id="meta-description"
-                                                                name="meta_description"></textarea>
+                                                                name="meta_description">{{$general_setting->meta_description}}</textarea>
 
                                                             <label for="logo" class="form-label">Logo</label>
                                                             <input type="file" class="form-control mb-2"
                                                                  id="logo"
                                                                 name="logo">
 
-                                                                <img id="preview-logo" src="#" alt="Logo Preview" style="display:none; margin-top: 10px; width: 60px; height: 60px">
+                                                                <img id="preview-logo" src="{{asset($general_setting->logo)}}" alt="Logo Preview" style="margin-top: 10px; width: 60px; height: 60px; {{ $general_setting->logo ? '' : 'display: none;' }}">
 
 
 

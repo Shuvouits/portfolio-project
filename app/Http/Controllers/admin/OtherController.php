@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OtherRequest;
+use App\Models\GeneralSetting;
 use App\Services\OtherService;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,8 @@ class OtherController extends Controller
 
     public function index()
     {
-        return view('backend.component.other');
+        $general_setting = GeneralSetting::first();
+        return view('backend.component.other', compact('general_setting'));
     }
 
 

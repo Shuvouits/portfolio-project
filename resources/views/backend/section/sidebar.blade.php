@@ -36,7 +36,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{route('dashboard')}}">
+                    <a class="nav-link menu-link {{ setSidebarActive(['dashboard']) }} " href="{{route('dashboard')}}">
                        <img src="{{asset('backend/assets/images/static/dashboard.png')}}" width="40" height="40" />
 
                         <span data-key="t-widgets" style="margin-left: 10px">Dashboard</span>
@@ -45,7 +45,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{route('intro.index')}}">
+                    <a class="nav-link menu-link {{ setSidebarActive(['intro.index']) }} " href="{{route('intro.index')}}">
                         <img src="{{asset('backend/assets/images/static/presentation.png')}}" width="40" height="40" />
 
                          <span data-key="t-widgets" style="margin-left: 10px" >Introduction</span>
@@ -53,7 +53,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{route('about.index')}}">
+                    <a class="nav-link menu-link {{ setSidebarActive(['about.index']) }} " href="{{route('about.index')}}">
 
                         <img src="{{asset('backend/assets/images/static/id-card.png')}}" width="40" height="40" />
 
@@ -62,28 +62,28 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{route('service.index')}}">
+                    <a class="nav-link menu-link {{ setSidebarActive(['service.index']) }} " href="{{route('service.index')}}">
                         <img src="{{asset('backend/assets/images/static/service.png')}}" width="40" height="40" />
                          <span data-key="t-widgets" style="margin-left: 10px">Service</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{route('portfolio.index')}}">
+                    <a class="nav-link menu-link {{ setSidebarActive(['portfolio.index']) }}" href="{{route('portfolio.index')}}">
                         <img src="{{asset('backend/assets/images/static/professional-portfolio.png')}}" width="40" height="40" />
                         <span data-key="t-widgets" style="margin-left: 10px">Portfolio</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{route('core.index')}}">
+                    <a class="nav-link menu-link {{ setSidebarActive(['core.index']) }} " href="{{route('core.index')}}">
                         <img src="{{asset('backend/assets/images/static/book.png')}}" width="40" height="40" />
                          <span data-key="t-widgets" style="margin-left: 10px">Core</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{route('other-info.index')}}">
+                    <a class="nav-link menu-link {{ setSidebarActive(['other-info.index']) }} " href="{{route('other-info.index')}}">
                         <img src="{{asset('backend/assets/images/static/responsibility.png')}}" width="40" height="40" />
                          <span data-key="t-widgets" style="margin-left: 10px">General-Setting</span>
                     </a>
