@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\admin\CoreController;
+use App\Http\Controllers\admin\CoreInfoController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\Introductioncontroller;
 use App\Http\Controllers\admin\OtherController;
@@ -40,6 +41,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     Route::resource('core', CoreController::class);
+    Route::resource('core-info', CoreInfoController::class);
+
     Route::resource('other-info', OtherController::class);
 
    // Route::get('/introduction', [])
