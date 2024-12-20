@@ -100,7 +100,9 @@
                                                             <div class="form-row mb-3">
 
 
-                                                                <input type="hidden" name="id[]" id="portfolio-{{$index}}" value="{{$portfolio->id}}" />
+                                                                <input type="hidden" name="id[]"
+                                                                    id="portfolio-{{ $index }}"
+                                                                    value="{{ $portfolio->id }}" />
 
 
 
@@ -113,7 +115,7 @@
 
                                                                 <input type="file" class="form-control mb-2 photoInput"
                                                                     id="photo-{{ $index }}" name="photo[]"
-                                                                    data-index="0">
+                                                                    data-index="{{$index}}">
 
 
                                                                 <div>
@@ -144,10 +146,22 @@
                                                                     value="{{ $portfolio->headline }}"></input>
 
 
+                                                                <label for="project-link-{{ $index }}"
+                                                                    class="form-label">
+                                                                    Project Link</label>
+                                                                <input class="form-control mb-2"
+                                                                    id="project-link-{{ $index }}"
+                                                                    placeholder="Enter the url"
+                                                                    name="project_link[]"
+                                                                    value="{{ $portfolio->project_link }}"></input>
+
+
+
+
                                                                 <label for="description-{{ $index }}"
                                                                     class="form-label">Portfolio
                                                                     Description</label>
-                                                                <textarea class="form-control mb-2" id="description-{{ $index }}" name="description[]">{{ $portfolio->description }}</textarea>
+                                                                <textarea class="form-control mb-2 description" name="description[]">{{ $portfolio->description }}</textarea>
 
 
 
@@ -169,6 +183,17 @@
                                                     <button type="submit"
                                                         class="btn btn-primary w-100 mt-3">Update</button>
                                                 </form>
+
+
+
+
+
+
+
+
+
+
+
 
 
                                             </div>

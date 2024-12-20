@@ -37,6 +37,7 @@ class PortfolioServiceRepository
             // $service_name = $data['service_name'][$index] ?? null;
             $headline = $data['headline'][$index] ?? null;
             $description = $data['description'][$index] ?? null;
+            $project_link = $data['project_link'][$index] ?? null;
             $id = $data['id'][$index] ?? null;
 
 
@@ -51,6 +52,7 @@ class PortfolioServiceRepository
                 'title' => $portfolio_title,
                 'headline' => $headline,
                 'description' => $description,
+                'project_link' => $project_link,
                 'photo' => $uploadedPhoto, // Save the uploaded image URL
             ]);
 

@@ -60,7 +60,7 @@ $(document).ready(function () {
         let newRow = `
             <div class="form-row mb-3">
                 <label for="company-${rowIndex}" class="form-label">Company Name</label>
-                <input type="text" class="form-control mb-2" placeholder="Enter your company name" id="company-${rowIndex}" name="company[]">
+                <input type="text" class="form-control mb-2" placeholder="Enter your company name" id="company-${rowIndex}" name="company_name[]">
 
                 <label for="address-${rowIndex}" class="form-label">Company Address</label>
                 <input type="text" class="form-control mb-2" placeholder="Enter company address" id="address-${rowIndex}" name="address[]">

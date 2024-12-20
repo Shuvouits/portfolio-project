@@ -3,8 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Models\User;
 
-class PortfolioRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,20 +23,20 @@ class PortfolioRequest extends FormRequest
      */
     public function rules(): array
     {
-
-
         return [
-            'photo.*' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
-            'title.*' => 'nullable|string',
-            'headline.*' => 'nullable|string',
-            'description.*' => 'nullable|string',
-            'id.*' => 'nullable|integer',
-            'project_link.*' => 'nullable|url'
 
+            'name' => ['required', 'string', 'max:255'],
+            'email' => [
+                'required',
+                'string',
+                'lowercase',
+                'email',
+                'max:255',
+                Rule::unique(User::class)->ignore($this->user()->id),
+            ],
 
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
 
         ];
-
-
     }
 }

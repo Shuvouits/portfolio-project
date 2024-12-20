@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // Initialize Summernote for the initial textarea
-    $('#core-description-0').summernote({
+    $('.core-description').summernote({
        height: 200,
        toolbar: [
            ['style', ['style']],
@@ -13,7 +13,7 @@ $(document).ready(function () {
    });
 
 
-   let rowIndex = 1; // Keep track of row index for unique IDs
+   let rowIndex = $('#form-rows .form-row').length; // Start from the last row index // Keep track of row index for unique IDs
 
    // Add new row
    $('#add-row').click(function () {
@@ -31,7 +31,7 @@ $(document).ready(function () {
                <input type="text" class="form-control mb-2" placeholder="Example: Hard Work" id="title-${rowIndex}" name="title[]">
 
                <label for="core-description-${rowIndex}" class="form-label">Core Description</label>
-               <textarea  class="form-control mb-2" id="core-description-${rowIndex}" name="core-description[]"></textarea>
+               <textarea  class="form-control mb-2 core-description"  name="core-description[]"></textarea>
 
                <button type="button" class="btn btn-danger remove-row">
 
@@ -45,7 +45,7 @@ $(document).ready(function () {
        $('#form-rows').append(newRow);
 
        // Initialize Summernote for the new textarea
-       $(`#core-description-${rowIndex}`).summernote({
+       $(`.core-description`).summernote({
            height: 200,
            toolbar: [
                ['style', ['style']],

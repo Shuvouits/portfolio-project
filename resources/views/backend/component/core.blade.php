@@ -111,7 +111,7 @@
 
                                                             </label>
                                                             <input type="file" class="form-control mb-2 photoInput" id="image-{{$index}}"
-                                                                name="image[]" data-index="0">
+                                                                name="image[]" data-index="{{$index}}">
 
                                                                 <div>
 
@@ -134,7 +134,7 @@
 
                                                             <label for="core-description-0" class="form-label">Core
                                                                 Description</label>
-                                                            <textarea class="form-control mb-2" id="core-description-0" name="core_description[]">{{$item->core_description}}</textarea>
+                                                            <textarea class="form-control mb-2 core-description"  name="core_description[]">{{$item->core_description}}</textarea>
 
 
 

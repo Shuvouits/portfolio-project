@@ -10,7 +10,8 @@ class Portfolio extends Model
         'photo',
         'title',
         'headline',
-        'description'
+        'description',
+        'project_link'
 
     ];
 }

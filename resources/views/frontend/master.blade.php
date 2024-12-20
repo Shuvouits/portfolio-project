@@ -12,9 +12,9 @@
     <meta name="keywords" content="Weasley - Portfolio Template">
     <meta name="description" content="Weasley - Portfolio Template">
     <!-- title -->
-    <title>Weasley - Portfolio Template</title>
+    <title>ShuvoBhowmik - Portfolio</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend/asset/favicon.ico')}}">
     <!-- theme css -->
     <link href="{{asset('frontend/assets/css/style.css')}}" rel="stylesheet">
 
@@ -87,6 +87,35 @@
 });
 
 </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+@if(session('success'))
+<script>
+    Swal.fire({
+        toast: true,
+        icon: 'success',
+        title: '{{ session('success') }}',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        customClass: {
+            title: 'swal-custom-title',
+        }
+    });
+</script>
+
+<style>
+    .swal-custom-title {
+        color: gray !important; /* Title color */
+        font-weight: bold; /* Optional: Make the text bold */
+    }
+</style>
+@endif
+
 
 </body>
 

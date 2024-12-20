@@ -5,26 +5,26 @@
             <div class="col-lg-7 pe-lg-5">
                 <div class="home-intro">
                     <h6>INTRODUCTION</h6>
-                    <h2>I'm Ron a Creative <span class="text-theme">Developer & UI Expert</span></h2>
-                    <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores. My passion is to design digital user experiences through the bold interface and meaningful interactions.</p>
+                    <h2 class="text-theme">{{$intro_section->title}} </h2>
+                    <p>{!! $intro_section->short_description !!}</p>
                     <div class="hs-exp">
                         <div class="exp-box">
-                            <h5>10+</h5>
+                            <h5>{{$intro_section->experience}}+</h5>
                             <span>YEARS<br /> OF EXPERIENCE</span>
                         </div>
                         <div class="exp-box">
-                            <h5>296+</h5>
+                            <h5>{{$intro_section->complete_project}}+</h5>
                             <span>PROJECTS<br /> COMPLETED</span>
                         </div>
                     </div>
                     <div class="btn-bar">
-                        <a class="link-effect" href="#">Browse Resume <i class="bi bi-arrow-up-right"></i></a>
+                        <a class="link-effect" target="_blank" href="{{$intro_section->resume}}">Download Resume <i class="bi bi-arrow-up-right"></i></a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-5">
                 <div class="home-image">
-                    <img src="assets/img/home-banner.jpg" title="" alt="">
+                    <img src="{{asset($intro_section->photo)}}" title="" alt="">
                 </div>
             </div>
         </div>

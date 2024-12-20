@@ -45,15 +45,17 @@ class AboutController extends Controller
 
     public function store(BioRequest $bioRequest, EducationRequest $eduRequest, ExperienceRequest $expRequest){
 
-        $this->bioService->saveBio($bioRequest->validated());
-        $this->eduService->saveEdu($eduRequest->validated());
-        $this->techService->saveTech($expRequest->validated());
-        return redirect()->back()->with('success', 'Data updated successfully');
+       // $this->bioService->saveBio($bioRequest->validated());
+       // $this->eduService->saveEdu($eduRequest->validated());
+       // $this->techService->saveTech($expRequest->validated());
+       // return redirect()->back()->with('success', 'Data updated successfully');
 
     }
 
 
     public function biographyUpdate(BioRequest $request){
+        $this->bioService->saveBio($request->validated());
+        return redirect()->back()->with('success', 'Data updated successfully');
 
 
 
@@ -61,22 +63,25 @@ class AboutController extends Controller
 
     public function educationUpdate(EducationRequest $request){
 
+        $this->eduService->saveEdu($request->validated());
 
+        return redirect()->back()->with('success', 'Data updated successfully');
 
-
-        return redirect()->back();
 
     }
 
     public function experienceUpdate(ExperienceRequest $request){
+
+      //  dd($request->validated());
+
         $this->expService->saveExp($request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data updated successfully');
 
     }
 
     public function technologyUpdate(TechnologyRequest $request){
         $this->techService->saveTech($request->validated());
-        return redirect()->back();
+        return redirect()->back()->with('success','Data updated successfully');
 
     }
 

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PortfolioRequest extends FormRequest
+class ContactRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,20 +21,13 @@ class PortfolioRequest extends FormRequest
      */
     public function rules(): array
     {
-
-
         return [
-            'photo.*' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
-            'title.*' => 'nullable|string',
-            'headline.*' => 'nullable|string',
-            'description.*' => 'nullable|string',
-            'id.*' => 'nullable|integer',
-            'project_link.*' => 'nullable|url'
 
-
-
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string|max:1000',
+            
         ];
-
-
     }
 }

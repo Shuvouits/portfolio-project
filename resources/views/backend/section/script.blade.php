@@ -74,3 +74,28 @@
 @endif
 
 
+@if(session('error'))
+<script>
+    Swal.fire({
+        toast: true,
+        icon: 'error',
+        title: '{{ session('error') }}',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        customClass: {
+            title: 'swal-custom-title',
+        }
+    });
+</script>
+
+<style>
+    .swal-custom-title {
+        color: red !important; /* Title color */
+        font-weight: bold; /* Optional: Make the text bold */
+    }
+</style>
+@endif
+
+

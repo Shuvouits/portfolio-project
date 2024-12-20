@@ -1,7 +1,8 @@
+
 $(document).ready(function () {
 
     // Initialize Summernote for the initial textarea
-    $('#description-0').summernote({
+    $('.description').summernote({
        height: 200,
        toolbar: [
            ['style', ['style']],
@@ -13,7 +14,7 @@ $(document).ready(function () {
    });
 
 
-   let rowIndex = 1; // Keep track of row index for unique IDs
+    let rowIndex = $('#form-rows .form-row').length; // Start from the last row index // Keep track of row index for unique IDs
 
    // Add new row
    $('#add-row').click(function () {
@@ -35,8 +36,12 @@ $(document).ready(function () {
                <label for="headline-${rowIndex}" class="form-label">Title Headline</label>
                <input type="text" class="form-control mb-2" placeholder="Example : Website Design for Marketing Agency Startup" id="headline-${rowIndex}" name="headline[]">
 
+               <label for="project-link-${rowIndex}" class="form-label">Project Link</label>
+               <input type="text" class="form-control mb-2" placeholder="Enter your project link" id="project-link-${rowIndex}" name="project-link[]">
+
+
                <label for="description-${rowIndex}" class="form-label">Description</label>
-               <textarea  class="form-control mb-2" id="description-${rowIndex}" name="description[]"></textarea>
+               <textarea  class="form-control mb-2 description" name="description[]"></textarea>
 
                <button type="button" class="btn btn-danger remove-row">Remove</button>
            </div>
@@ -44,7 +49,7 @@ $(document).ready(function () {
        $('#form-rows').append(newRow);
 
        // Initialize Summernote for the new textarea
-       $(`#description-${rowIndex}`).summernote({
+       $(`.description`).summernote({
            height: 200,
            toolbar: [
                ['style', ['style']],
@@ -99,3 +104,8 @@ $('#form-rows').on('change', '.photoInput', function (event) {
 
 
 });
+
+
+
+
+

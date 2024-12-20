@@ -2,8 +2,12 @@
     <nav class="navbar header-nav header-white header-transparent navbar-expand-lg one-page-nav">
         <div class="container">
             <!-- Brand -->
-            <a class="navbar-brand" href="http://pxdraft.com/themeforest/weasley/">
-                <img src="assets/img/logo-light.svg" title="" alt="">
+            <a class="navbar-brand" href="#">
+                @if(get_general_setting()->logo)
+                <img src="{{asset(get_general_setting()->logo)}}" title="" alt="">
+                @else
+                <span style="color: white">SHUVO BHOWMIK</span>
+                @endif
             </a>
             <!-- / -->
             <!-- Mobile Toggle -->
