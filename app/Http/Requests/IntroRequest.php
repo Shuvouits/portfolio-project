@@ -26,7 +26,7 @@ class IntroRequest extends FormRequest
             'short_description' => 'nullable|string',
             'experience' => 'nullable|integer|min:1',
             'complete_project' => 'nullable|integer|min:1',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg',
             'resume' => 'nullable|file|mimes:pdf|max:2048',
         ];
     }

@@ -5,7 +5,7 @@
             <div class="col-lg-7 pe-lg-5">
                 <div class="home-intro">
                     <h6>INTRODUCTION</h6>
-                    <h2 class="text-theme">{{$intro_section->title}} </h2>
+                    <h2 class="text-theme" style="font-size: 45px">{{$intro_section->title}} </h2>
                     <p>{!! $intro_section->short_description !!}</p>
                     <div class="hs-exp">
                         <div class="exp-box">
